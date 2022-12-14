@@ -5,24 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="343cfab2-3eb9-4cdc-9c16-881cfe803d9f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/OOP-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/PageFormatLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/ServerRunner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/FileNotFoundExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/IOExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gallows_psswd.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/html/game.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/html/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/server_configuration.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/TestScriptIOException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/testScript.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/wordsCategories/oop.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/wordsCategories/psychology.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/html/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/game.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +23,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -46,11 +40,6 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
   </component>
   <component name="ProjectId" id="2Ij1gTnmRa0gufoyaLPdIHYE6Bg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -58,29 +47,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Pavel/Desktop/Reepositories/GallowsGame/libs/OOP-1.0-SNAPSHOT-jar-with-dependencies.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pavel/OneDrive/Desktop/Reepositories/GallowsGame/libs/OOP-1.0-SNAPSHOT-jar-with-dependencies.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pavel\Desktop\Reepositories\CSFSession\libs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pavel\OneDrive\Desktop\Reepositories\GallowsGame\src\main\resources" />
+      <recent name="C:\Users\pavel\OneDrive\Desktop\Reepositories\GallowsGame\src\main\resources\gallowsGame" />
       <recent name="C:\Users\Pavel\Desktop\Reepositories\CSFSession\src\main\resources" />
     </key>
   </component>
@@ -116,10 +107,25 @@
       <workItem from="1670852821987" duration="6118000" />
       <workItem from="1670951329930" duration="626000" />
       <workItem from="1670955046678" duration="1028000" />
+      <workItem from="1670956829828" duration="88000" />
+      <workItem from="1670998973802" duration="1318000" />
+      <workItem from="1671000682678" duration="671000" />
+      <workItem from="1671006208069" duration="5530000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
