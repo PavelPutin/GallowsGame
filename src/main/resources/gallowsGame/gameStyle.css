@@ -1,0 +1,86 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#word {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.word-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 90px;
+    margin-right: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.word-element:last-of-type {
+    margin-right: 0;
+}
+
+.word-element-guessed {
+    border-color: green;
+}
+
+.keyboard-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#keyboard {
+    position: relative;
+}
+
+.keyboard-line {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.keyboard-line:nth-of-type(2) {
+    margin-left: -20px;
+}
+
+.keyboard-line:last-of-type {
+    margin-bottom: 0;
+    margin-left: -50px;
+}
+
+.keyboard-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+
+    background-color: #555;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    color: aliceblue;
+}
+
+.keyboard-element:last-of-type {
+    margin-right: 0;
+}
+
+.keyboard-element-pressed {
+    background-color: #333;
+    color: darkgray;
+}
+
+.keyboard-element-special {
+    position: absolute;
+    top: -40px;
+    left: -40px;
+}
+

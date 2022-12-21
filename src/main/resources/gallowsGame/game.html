@@ -2,13 +2,17 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Показ имени и пароля</title>
+    <title>Игра #{0} в категории {1}</title>
+    <link rel="stylesheet" type="text/css" href="gameStyle.css">
 </head>
 <body>
-    <p>Имя: {0}</p>
-    <p>Пароль: {1}</p>
-    <button id="random-number-button">Покажи случайное число</button>
-    <p id="random-number-show"></p>
-    <script src="testScript.js"></script>
+    <header>
+        <p>Сделано попыток <span id="tries-counter"></span></p>
+    </header>
+    <div id="word"></div>
+    <div class="keyboard-wrapper">
+        <div id="keyboard"></div>
+    </div>
+<script src="gameScript.js"></script>
 </body>
 </html>

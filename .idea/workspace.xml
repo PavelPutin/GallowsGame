@@ -4,23 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="343cfab2-3eb9-4cdc-9c16-881cfe803d9f" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/CantConnectToDBException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/account.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/cantConnectToDBException.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/rejectedLogin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/rejectedSignup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/successLogin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/successSignup.html" afterDir="false" />
+    <list default="true" id="343cfab2-3eb9-4cdc-9c16-881cfe803d9f" name="Changes" comment="Реализовал систему авторизации и входа">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/database/UserDataBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/UnexcitingGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/UserGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/model/GallowsGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/model/GameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/model/WinStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/model/Word.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/accountScript.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/gameScript.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/gameStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/unexcitingGame.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/OOP-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/OOP-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/IOExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/TestScriptIOException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallows_psswd.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/userdatabase.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/FileNotFoundExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/game.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/testScript.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/wordsCategories/oop.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/wordsCategories/ООП.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/wordsCategories/psychology.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/wordsCategories/Психология.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +33,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Record" />
         <option value="JavaScript File" />
         <option value="Class" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -60,25 +65,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Pavel/Desktop/Reepositories/GallowsGame/libs/OOP-1.0-SNAPSHOT-jar-with-dependencies.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pavel/Desktop/Reepositories/GallowsGame/libs/OOP-1.0-SNAPSHOT-jar-with-dependencies.jar&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.vsu.putin_p_a.gallows.model" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pavel\Desktop\Reepositories\GallowsGame\libs" />
       <recent name="C:\Users\Pavel\Desktop\Reepositories\CSFSession\libs" />
@@ -128,8 +137,20 @@
       <workItem from="1670998973802" duration="1318000" />
       <workItem from="1671000682678" duration="671000" />
       <workItem from="1671006208069" duration="5530000" />
-      <workItem from="1671090260426" duration="5152000" />
+      <workItem from="1671090260426" duration="5429000" />
+      <workItem from="1671112386810" duration="9411000" />
+      <workItem from="1671183498521" duration="9557000" />
+      <workItem from="1671207367429" duration="7024000" />
+      <workItem from="1671638859869" duration="3539000" />
     </task>
+    <task id="LOCAL-00001" summary="Реализовал систему авторизации и входа">
+      <created>1671097270090</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671097270090</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,5 +178,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Реализовал систему авторизации и входа" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализовал систему авторизации и входа" />
   </component>
 </project>
