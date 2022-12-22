@@ -3,14 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Аккаунт</title>
+    <link rel="stylesheet" type="text/css" href="accountStyle.css">
 </head>
 <body>
-    <h1>Здравствуйте, {0}!</h1>
-    <h2>Вы успешно вошли в аккаунт!</h2>
-    <label for="category-select">Выберите категорию слов:</label>
-    <select name="category" id="category-select">
-    </select>
-    <button id="start-game-button">Начать игру!</button>
+    <header>
+        <h1>Здравствуйте, {0}!</h1>
+        <h2>Вы успешно вошли в аккаунт!</h2>
+    </header>
+
+    <div>
+        <h2>Статистика</h2>
+        <div id="total-games-number"></div>
+        <div id="wins-number"></div>
+        <div id="loses-number"></div>
+        <div id="games-bar">
+            <div id="wins-bar"></div>
+        </div>
+    </div>
+
+    <div id="active-games-list-wrapper"></div>
+
+    <div>
+        <label for="category-select">Выберите категорию слов:</label>
+        <select name="category" id="category-select"></select>
+        <button id="start-game-button">Начать игру!</button>
+    </div>
+
+    <footer>
+        <a href="http://localhost:8080/gallowsGame/index">На главную</a>
+    </footer>
 
     <script src="accountScript.js"></script>
 </body>

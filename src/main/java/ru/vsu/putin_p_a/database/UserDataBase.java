@@ -60,6 +60,25 @@ public class UserDataBase {
         return false;
     }
 
+    public UserCouple getUser(String username, String passwordHash) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(dataBase));
+        while (reader.ready()) {
+            String line = reader.readLine();
+            String[] data = line.split(",");
+
+            String internalUsername = data[0];
+            String internalHash = data[1];
+            if (internalUsername.equals(username) && Arrays.equals(internalHash.getBytes(), passwordHash.getBytes())) {
+                reader.close();
+                int totalGames = Integer.parseInt(data[2]);
+                int victories = Integer.parseInt(data[3]);
+                return new UserCouple(username, passwordHash, totalGames, victories);
+            }
+        }
+        reader.close();
+        return null;
+    }
+
     public void addGameResultUserData(String username, String passwordHash, boolean isVictory) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(dataBase));
         List<String> data = new ArrayList<>();
@@ -83,7 +102,7 @@ public class UserDataBase {
         }
         reader.close();
 
-        String text = String.join(",", data) + "\n";
+        String text = String.join("\n", data);
         Files.write(Paths.get(dataBase.toURI()), text.getBytes(), StandardOpenOption.WRITE);
     }
 }

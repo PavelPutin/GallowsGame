@@ -78,9 +78,12 @@ body {
     color: darkgray;
 }
 
-.keyboard-element-special {
+.keyboard-line-special {
     position: absolute;
     top: -40px;
     left: -40px;
 }
 
+.keyboard-line-special .keyboard-element {
+    margin: 0px;
+}

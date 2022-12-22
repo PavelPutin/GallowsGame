@@ -7,12 +7,16 @@
 </head>
 <body>
     <header>
-        <p>Сделано попыток <span id="tries-counter"></span></p>
+        <p>Допущено ошибок: <span id="tries-counter"></span> <span id="game-status"></span></p>
+        <p><a href="http://localhost:8080/gallowsGame/account?username={2}&passwordHash={3}">Вернуться в аккаунт</a></p>
     </header>
     <div id="word"></div>
     <div class="keyboard-wrapper">
         <div id="keyboard"></div>
     </div>
+    <footer>
+        <a href="http://localhost:8080/gallowsGame/index">На главную</a>
+    </footer>
 <script src="gameScript.js"></script>
 </body>
 </html>

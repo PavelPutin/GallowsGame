@@ -1,6 +1,8 @@
 package ru.vsu.putin_p_a.gallows.controllers;
 
 import ru.vsu.putin_p_a.PageFormatLoader;
+import ru.vsu.putin_p_a.ServerRunner;
+import ru.vsu.putin_p_a.database.UserCouple;
 import ru.vsu.putin_p_a.database.UserDataBase;
 import ru.vsu.putin_p_a.gallows.model.GallowsGame;
 import ru.vsu.putin_p_a.gallows.model.GameState;
@@ -53,20 +55,24 @@ public class GallowsGameController implements IController {
             throw new RuntimeException(e);
         }
 
-        INDEX_PAGE = PageFormatLoader.load(PAGES_DIR + "index.html");
-        LOGIN_PAGE = PageFormatLoader.load(PAGES_DIR + "login.html");
-        SUCCESS_LOGIN_PAGE = PageFormatLoader.load(PAGES_DIR + "successLogin.html");
-        REJECTED_LOGIN = PageFormatLoader.load(PAGES_DIR + "rejectedLogin.html");
-        SIGNUP_PAGE = PageFormatLoader.load(PAGES_DIR + "signup.html");
-        SUCCESS_SIGNUP_PAGE = PageFormatLoader.load(PAGES_DIR + "successSignup.html");
-        REJECTED_SIGNUP_PAGE = PageFormatLoader.load(PAGES_DIR + "rejectedSignup.html");
-        ACCOUNT_PAGE = PageFormatLoader.load(PAGES_DIR + "account.html");
-        GAME_PAGE = PageFormatLoader.load(PAGES_DIR + "game.html");
+        INDEX_PAGE = loadPage("index.html");
+        LOGIN_PAGE = loadPage("login.html");
+        SUCCESS_LOGIN_PAGE = loadPage("successLogin.html");
+        REJECTED_LOGIN = loadPage("rejectedLogin.html");
+        SIGNUP_PAGE = loadPage("signup.html");
+        SUCCESS_SIGNUP_PAGE = loadPage("successSignup.html");
+        REJECTED_SIGNUP_PAGE = loadPage("rejectedSignup.html");
+        ACCOUNT_PAGE = loadPage("account.html");
+        GAME_PAGE = loadPage("game.html");
 
         File categoriesFilesDir = new File(Configuration.ROOT + "wordsCategories");
         CATEGORIES = Arrays.stream(categoriesFilesDir.list())
                 .map(fileName -> fileName.substring(0, fileName.lastIndexOf(".")))
                 .toList();
+    }
+
+    private static MessageFormat loadPage(String filename) {
+        return PageFormatLoader.load(PAGES_DIR + filename);
     }
 
     @Get("/index")
@@ -82,11 +88,13 @@ public class GallowsGameController implements IController {
     @Get("/loginResult")
     public String loginResult(@Param("username") String username, @Param("password") String password) {
         try {
-            String decodedUsername = URLDecoder.decode(username, StandardCharsets.UTF_8);
-            byte[] hash = DIGEST.digest(password.getBytes(StandardCharsets.UTF_8));
+            String decodedUsername = decode(username);
+            String dPassword = decode(password);
+            byte[] hash = DIGEST.digest(dPassword.getBytes(StandardCharsets.UTF_8));
             String hashString = new String(hash, StandardCharsets.UTF_8);
             if (USER_DATA_BASE.containsUser(decodedUsername, hashString)) {
-                return SUCCESS_LOGIN_PAGE.format(new Object[]{decodedUsername, URLEncoder.encode(new String(hash), StandardCharsets.UTF_8)});
+                String encodedHash = URLEncoder.encode(new String(hash), StandardCharsets.UTF_8);
+                return SUCCESS_LOGIN_PAGE.format(new Object[]{decodedUsername, encodedHash});
             }
             return REJECTED_LOGIN.format(new Object[0]);
         } catch (IOException e) {
@@ -105,15 +113,16 @@ public class GallowsGameController implements IController {
     @Get("/signupResult")
     public String signupResult(@Param("username") String username, @Param("password") String password) {
         try {
-            if (!USER_DATA_BASE.containsUsername(username)) {
-                byte[] hash = DIGEST.digest(password.getBytes(StandardCharsets.UTF_8));
-                String decodedUsername = URLDecoder.decode(username, StandardCharsets.UTF_8);
-                USER_DATA_BASE.addUser(decodedUsername, hash);
+            String dUsername = decode(username);
+            String dPassword = decode(password);
+            if (!USER_DATA_BASE.containsUsername(dUsername)) {
+                byte[] hash = DIGEST.digest(dPassword.getBytes(StandardCharsets.UTF_8));
+                USER_DATA_BASE.addUser(dUsername, hash);
 
                 String encoded = URLEncoder.encode(new String(hash), StandardCharsets.UTF_8);
-                return SUCCESS_SIGNUP_PAGE.format(new Object[]{decodedUsername, encoded});
+                return SUCCESS_SIGNUP_PAGE.format(new Object[]{dUsername, encoded});
             }
-            return REJECTED_SIGNUP_PAGE.format(new Object[]{username});
+            return REJECTED_SIGNUP_PAGE.format(new Object[]{dUsername});
         } catch (IOException e) {
             throw new ControllerExceptionContainer(
                     e,
@@ -125,8 +134,8 @@ public class GallowsGameController implements IController {
     @Get("/account")
     public String account(@Param("username") String username, @Param("passwordHash") String passwordHash) {
         try {
-            String hash = URLDecoder.decode(passwordHash, StandardCharsets.UTF_8);
-            String decodedUsername = URLDecoder.decode(username, StandardCharsets.UTF_8);
+            String hash = decode(passwordHash);
+            String decodedUsername = decode(username);
             boolean validUser = USER_DATA_BASE.containsUser(decodedUsername, hash);
             if (validUser) {
                 return ACCOUNT_PAGE.format(new Object[]{decodedUsername});
@@ -146,11 +155,11 @@ public class GallowsGameController implements IController {
             @Param("passwordHash") String passwordHash,
             @Param("category") String category) {
         try {
-            String decodedUsername = URLDecoder.decode(username, StandardCharsets.UTF_8);
-            String decodedHash = URLDecoder.decode(passwordHash, StandardCharsets.UTF_8);
-            String decodedCategory = URLDecoder.decode(category, StandardCharsets.UTF_8);
-
+            String decodedUsername = decode(username);
+            String decodedHash = decode(passwordHash);
             UserGame userGame = new UserGame(decodedUsername, decodedHash, nextId);
+
+            String decodedCategory = decode(category);
             GallowsGame game = new GallowsGame(nextId, decodedCategory);
             game.chooseWord();
 
@@ -169,14 +178,14 @@ public class GallowsGameController implements IController {
             @Param("username") String username,
             @Param("passwordHash") String passwordHash,
             @Param("gameId") String gameId) {
-        GallowsGame game = getGame(username, passwordHash, gameId);
+        GallowsGame game = getGallowsGameByParameters(username, passwordHash, gameId);
         if (game == null) {
             throw new ControllerExceptionContainer(
                     new IllegalAccessException("Не удалось получить данную игру"),
                     "/gallowsGame/unexcitingGame",
                     ResponseStatus.NOT_FOUND);
         }
-        return GAME_PAGE.format(new Object[] {gameId, game.getCategory()});
+        return GAME_PAGE.format(new Object[] {gameId, game.getCategory(), username, passwordHash});
     }
 
     @Get("/getGameState")
@@ -184,7 +193,7 @@ public class GallowsGameController implements IController {
             @Param("username") String username,
             @Param("passwordHash") String passwordHash,
             @Param("gameId") String gameId) {
-        GallowsGame game = getGame(username, passwordHash, gameId);
+        GallowsGame game = getGallowsGameByParameters(username, passwordHash, gameId);
         return game.getCurrentState().toString();
     }
 
@@ -194,25 +203,39 @@ public class GallowsGameController implements IController {
             @Param("passwordHash") String passwordHash,
             @Param("gameId") String gameId,
             @Param("character") String character) {
-        GallowsGame game = getGame(username, passwordHash, gameId);
-        String decodedCharacter = URLDecoder.decode(character, StandardCharsets.UTF_8);
+        GallowsGame game = getGallowsGameByParameters(username, passwordHash, gameId);
+
+        String decodedCharacter = decode(character);
         GameState state = game.makeChoice(decodedCharacter);
         return state.toString();
     }
 
-    @Get("/endGame")
-    public String endGame(
+    @Get("/getCategories")
+    public String getCategories() {
+        return String.join(",", CATEGORIES);
+    }
+
+    @Get("/getActiveGames")
+    public String getActiveGames(
             @Param("username") String username,
-            @Param("passwordHash") String passwordHash,
-            @Param("gameId") String gameId) {
+            @Param("passwordHash") String passwordHash
+    ) {
+        String dUsername = decode(username);
+        String dPasswordHash = decode(passwordHash);
+        return USER_AND_GAME.keySet().stream().filter(userGame ->
+                userGame.username().equals(dUsername) && userGame.passwordHash().equals(dPasswordHash)
+        ).map(UserGame::gameId).toList().toString();
+    }
+
+    @Get("/getUserInfo")
+    public UserCouple getUserInfo(
+            @Param("username") String username,
+            @Param("passwordHash") String passwordHash
+    ) {
         try {
-            String decodedUsername = URLDecoder.decode(username, StandardCharsets.UTF_8);
-            String decodedHash = URLDecoder.decode(passwordHash, StandardCharsets.UTF_8);
-            UserGame ug = new UserGame(decodedUsername, decodedHash, Integer.parseInt(gameId));
-            GallowsGame game = USER_AND_GAME.get(ug);
-            boolean victory = game.getCurrentState().winStatus().equals(WinStatus.WIN);
-            USER_DATA_BASE.addGameResultUserData(decodedUsername, decodedHash, victory);
-            return game.getWord();
+            String dUsername = decode(username);
+            String dPasswordHash = decode(passwordHash);
+            return USER_DATA_BASE.getUser(dUsername, dPasswordHash);
         } catch (IOException e) {
             throw new ControllerExceptionContainer(
                     e,
@@ -221,9 +244,25 @@ public class GallowsGameController implements IController {
         }
     }
 
-    @Get("/getCategories")
-    public String getCategories() {
-        return String.join(",", CATEGORIES);
+    @Get("/endGame")
+    public String endGame(
+            @Param("username") String username,
+            @Param("passwordHash") String passwordHash,
+            @Param("gameId") String gameId) {
+        try {
+            GallowsGame game = removeGallowsGameByParameters(username, passwordHash, gameId);
+            boolean victory = game.getCurrentState().winStatus().equals(WinStatus.WIN);
+
+            String decodedUsername = decode(username),
+                    decodedHash = decode(passwordHash);
+            USER_DATA_BASE.addGameResultUserData(decodedUsername, decodedHash, victory);
+            return game.getWord();
+        } catch (IOException e) {
+            throw new ControllerExceptionContainer(
+                    e,
+                    "/gallowsGame/cantConnectToDBException",
+                    ResponseStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @Get("/accountScript.js")
@@ -256,10 +295,31 @@ public class GallowsGameController implements IController {
         }
     }
 
-    private GallowsGame getGame(String username, String passwordHash, String gameId) {
-        String decodedUsername = URLDecoder.decode(username, StandardCharsets.UTF_8);
-        String decodedHash = URLDecoder.decode(passwordHash, StandardCharsets.UTF_8);
+    @Get("/accountStyle.css")
+    public byte[] accountStyleCSS() {
+        File style = new File(Configuration.ROOT + "gallowsGame/accountStyle.css");
+        try (FileInputStream input = new FileInputStream(style)) {
+            return input.readAllBytes();
+        } catch (IOException e) {
+            throw new ControllerExceptionContainer(e, "/gallowsGame/testScriptIOException", ResponseStatus.NOT_FOUND);
+        }
+    }
+
+    private GallowsGame getGallowsGameByParameters(String username, String passwordHash, String gameId) {
+        String dUsername = decode(username),
+                dPasswordHash = decode(passwordHash);
         int iGameId = Integer.parseInt(gameId);
-        return USER_AND_GAME.get(new UserGame(decodedUsername, decodedHash, iGameId));
+        return USER_AND_GAME.get(new UserGame(dUsername, dPasswordHash, iGameId));
+    }
+
+    private GallowsGame removeGallowsGameByParameters(String username, String passwordHash, String gameId) {
+        String dUsername = decode(username),
+                dPasswordHash = decode(passwordHash);
+        int iGameId = Integer.parseInt(gameId);
+        return USER_AND_GAME.remove(new UserGame(dUsername, dPasswordHash, iGameId));
+    }
+
+    private String decode(String source) {
+        return URLDecoder.decode(source, StandardCharsets.UTF_8);
     }
 }

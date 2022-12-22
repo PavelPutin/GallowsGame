@@ -48,10 +48,6 @@ public class GallowsGame {
             }
         } else if (++tries > MAX_TRIES_NUMBER) {
             ws = WinStatus.LOSE;
-            for (int i = 0; i < word.length(); i++) {
-                String c = String.valueOf(word.getValue().charAt(i));
-                word.markChar(c);
-            }
         }
 
         current = new GameState(ws, word.length(), word.getMarkedChars(), usedCharacters, tries);

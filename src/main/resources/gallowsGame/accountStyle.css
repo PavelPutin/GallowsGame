@@ -1,0 +1,20 @@
+#games-bar {
+    box-sizing: border-box;
+    width: 400px;
+    height: 40px;
+    background-color: red;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 0px 2px black;
+    padding: 2px 2px;
+}
+
+#wins-bar {
+    display: inline-block;
+    height: 100%;
+    background-color: green;
+    border-radius: 2px 0;
+}
+
+.active-game-item > a {
+    text-decoration: none;
+}
