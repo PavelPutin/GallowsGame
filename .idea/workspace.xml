@@ -4,27 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="343cfab2-3eb9-4cdc-9c16-881cfe803d9f" name="Changes" comment="Прототип">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/database/UserCouple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/accountStyle.css" afterDir="false" />
+    <list default="true" id="343cfab2-3eb9-4cdc-9c16-881cfe803d9f" name="Changes" comment="Игра сделана">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/database/UserDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/database/UserDataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/model/GallowsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/model/GallowsGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/model/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/model/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/accountScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/accountScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/cantConnectToDBException.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/cantConnectToDBException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/gameScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/gameScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/gameStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/gameStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/rejectedLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/rejectedLogin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/rejectedSignup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/rejectedSignup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/successLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/successLogin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/successSignup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/successSignup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gallowsGame/unexcitingGame.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gallowsGame/unexcitingGame.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +128,7 @@
       <workItem from="1671638859869" duration="3815000" />
       <workItem from="1671686837360" duration="392000" />
       <workItem from="1671687710280" duration="10063000" />
-      <workItem from="1671716440203" duration="3351000" />
+      <workItem from="1671716440203" duration="5271000" />
     </task>
     <task id="LOCAL-00001" summary="Реализовал систему авторизации и входа">
       <created>1671097270090</created>
@@ -161,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671642664321</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Игра сделана">
+      <created>1671720445874</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671720445874</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +183,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Реализовал систему авторизации и входа" />
     <MESSAGE value="Прототип" />
-    <option name="LAST_COMMIT_MESSAGE" value="Прототип" />
+    <MESSAGE value="Игра сделана" />
+    <option name="LAST_COMMIT_MESSAGE" value="Игра сделана" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -205,18 +196,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGameController.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGameController.java</url>
-          <line>136</line>
+          <line>137</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/gallows/controllers/GallowsGameController.java</url>
           <line>90</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/putin_p_a/database/UserDataBase.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -33,6 +33,7 @@ public class UserDataBase {
             String line = reader.readLine();
             String[] data = line.split(",");
 
+
             String internalUsername = data[0];
             if (internalUsername.equals(username)) {
                 reader.close();

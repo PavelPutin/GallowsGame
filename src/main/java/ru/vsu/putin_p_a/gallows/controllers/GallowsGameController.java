@@ -90,7 +90,7 @@ public class GallowsGameController implements IController {
         try {
             String decodedUsername = decode(username);
             String dPassword = decode(password);
-            byte[] hash = DIGEST.digest(dPassword.getBytes(StandardCharsets.UTF_8));
+            byte[] hash = getHash(dPassword);
             String hashString = new String(hash, StandardCharsets.UTF_8);
             if (USER_DATA_BASE.containsUser(decodedUsername, hashString)) {
                 String encodedHash = URLEncoder.encode(new String(hash), StandardCharsets.UTF_8);
@@ -116,7 +116,8 @@ public class GallowsGameController implements IController {
             String dUsername = decode(username);
             String dPassword = decode(password);
             if (!USER_DATA_BASE.containsUsername(dUsername)) {
-                byte[] hash = DIGEST.digest(dPassword.getBytes(StandardCharsets.UTF_8));
+                byte[] hash = getHash(dPassword);
+
                 USER_DATA_BASE.addUser(dUsername, hash);
 
                 String encoded = URLEncoder.encode(new String(hash), StandardCharsets.UTF_8);
@@ -321,5 +322,15 @@ public class GallowsGameController implements IController {
 
     private String decode(String source) {
         return URLDecoder.decode(source, StandardCharsets.UTF_8);
+    }
+
+    private static byte[] getHash(String dPassword) {
+        byte[] hash = DIGEST.digest(dPassword.getBytes(StandardCharsets.UTF_8));
+        for (int i = 0; i < hash.length; i++) {
+            if (hash[i] == 44) {
+                hash[i] += 1;
+            }
+        }
+        return hash;
     }
 }
